@@ -264,6 +264,19 @@ export default function BookmarkFormUI (props) {
         {renderAuth()}
         <FormItem
           {...formItemLayout}
+          label={e('totpKey')}
+          name='totpKey'
+          hasFeedback
+          rules={[{
+            max: 128, message: '128 chars max'
+          }]}
+        >
+          <Input.Password
+            placeholder={e('totpKey')}
+          />
+        </FormItem>
+        <FormItem
+          {...formItemLayout}
           label={e('port')}
           hasFeedback
           name='port'

@@ -1,4 +1,4 @@
-const { exec } = require('shelljs')
+const { exec, echo } = require('shelljs')
 const { resolve } = require('path')
 // ./node_modules/.bin/cross-env NODE_ENV=production ./node_modules/.bin/webpack --progress --config build/webpack.config.js"
 const webpack = resolve(
@@ -11,4 +11,5 @@ const conf = resolve(
   __dirname,
   '../build/webpack.config.js'
 )
+echo(conf)
 exec(`${crossEnv} NODE_ENV=production ${webpack} --progress --config ${conf}`)

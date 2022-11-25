@@ -21,6 +21,7 @@ delete pack.engines
 delete pack.preferGlobal
 
 if (isWin) {
+  echo('is windows')
   delete pack.dependencies['node-bash']
 } else {
   delete pack.dependencies['node-powershell']
