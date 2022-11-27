@@ -257,15 +257,12 @@ class Terminal {
     const display = await getDisplay()
     const x11Cookie = await getX11Cookie()
 
-    if (initOptions.host && initOptions.totpKey && initOptions.host === 'fort.guazi-corp.com') {
-      const last7 = initOptions.password.slice(-7)
-      if (last7.indexOf(' ') === 0) {
-        try {
-          const code = TOTP(initOptions.totpKey)
-          initOptions.password = initOptions.password.slice(0, -6) + code
-        } catch (e) {
-          log.error(e)
-        }
+    if (initOptions.totpKey) {
+      try {
+        const code = TOTP(initOptions.totpKey)
+        initOptions.password = initOptions.password + ' ' + code
+      } catch (e) {
+        log.error(e)
       }
     }
 
